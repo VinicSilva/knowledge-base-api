@@ -17,8 +17,6 @@ export default class TopicService {
     sourceTopicId: number,
     targetTopicId: number
   ): Promise<any> {
-    console.log("🚀 ~ TopicService ~ targetTopicId:", targetTopicId)
-    console.log("🚀 ~ TopicService ~ sourceTopicId:", sourceTopicId)
     const findSourceTopicId = await this.topicRepository.findOne(sourceTopicId);
     const findTargetTopicId = await this.topicRepository.findOne(targetTopicId);
     if (!findSourceTopicId || !findTargetTopicId) {
@@ -28,8 +26,12 @@ export default class TopicService {
       sourceTopicId,
       targetTopicId
     );
-    console.log("🚀 ~ TopicService ~ shortestPath:", shortestPath)
-    return shortestPath;
+
+    if (!shortestPath.length) {
+      return { statusCode: 404, message: "No path found." };
+    }
+
+    return shortestPath.map(item => `TOPIC ${item.id}: ${item.name}`).join(" -> ");
   }
 
   async create(body: any) {
