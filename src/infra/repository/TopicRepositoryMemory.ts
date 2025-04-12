@@ -69,7 +69,7 @@ export default class TopicRepositoryMemory implements TopicRepository {
       (topic: Topic) => topic.id === topicId
     );
     if (topicIndex == -1) return null;
-    this.topics = this.topics.slice(topicIndex, 1);
+    this.topics.splice(topicIndex, 1);
     return this.findAll();
   }
 }

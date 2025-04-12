@@ -1,7 +1,7 @@
 export default class Resource {
   constructor(
     readonly url: string,
-    readonly description: string,,
+    readonly description: string,
     readonly topicId: number,
     readonly type: "video" | "article" | "pdf",
     readonly id?: number,

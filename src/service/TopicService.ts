@@ -14,8 +14,9 @@ export default class TopicService {
   }
 
   async create(body: any) {
-    const { name, content, version, parentTopicId } = body;
-    if (!name || !content || !version) {
+    const { name, content } = body;
+    body.version = 1;
+    if (!name || !content) {
       return { statusCode: 400, message: "Fields required." };
     }
     const topic = await this.topicRepository.create(body);
@@ -23,8 +24,8 @@ export default class TopicService {
   }
 
   async update(topicId: number, body: any) {
-    const { name, content, version, parentTopicId } = body;
-    if (!name || !content || !version) {
+    const { name, content } = body;
+    if (!name || !content) {
       return { statusCode: 400, message: "Fields required." };
     }
     const findTopic = await this.topicRepository.findOne(topicId);
