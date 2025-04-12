@@ -15,7 +15,6 @@ export default class TopicService {
 
   async create(body: any) {
     const { name, content } = body;
-    body.version = 1;
     if (!name || !content) {
       return { statusCode: 400, message: "Fields required." };
     }
