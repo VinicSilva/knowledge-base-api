@@ -13,6 +13,25 @@ export default class TopicService {
     return topic;
   }
 
+  async shortestPath(
+    sourceTopicId: number,
+    targetTopicId: number
+  ): Promise<any> {
+    console.log("🚀 ~ TopicService ~ targetTopicId:", targetTopicId)
+    console.log("🚀 ~ TopicService ~ sourceTopicId:", sourceTopicId)
+    const findSourceTopicId = await this.topicRepository.findOne(sourceTopicId);
+    const findTargetTopicId = await this.topicRepository.findOne(targetTopicId);
+    if (!findSourceTopicId || !findTargetTopicId) {
+      return { statusCode: 404, message: "Topic not found." };
+    }
+    const shortestPath = await this.topicRepository.findShortestPath(
+      sourceTopicId,
+      targetTopicId
+    );
+    console.log("🚀 ~ TopicService ~ shortestPath:", shortestPath)
+    return shortestPath;
+  }
+
   async create(body: any) {
     const { name, content } = body;
     if (!name || !content) {

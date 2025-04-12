@@ -27,6 +27,22 @@ export default class TopicController {
       }
     );
 
+    http.route(
+      "get",
+      "/topics/shortest-path/:sourceTopicId/:targetTopicId",
+      async function (
+        params: any,
+        _body: any
+      ) {
+        const topicService = new TopicService(topicRepository);
+        const shortestPath = await topicService.shortestPath(
+          parseInt(params.sourceTopicId),
+          parseInt(params.targetTopicId)
+        );
+        return shortestPath;
+      }
+    );
+
     http.route("post", "/topics", async function (params: any, body: any) {
       const topicService = new TopicService(topicRepository);
       const topic: any = await topicService.create(body);

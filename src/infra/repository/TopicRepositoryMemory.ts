@@ -101,6 +101,50 @@ export default class TopicRepositoryMemory implements TopicRepository {
     return this.findAll();
   }
 
+  async findShortestPath(startId: number, endId: number): Promise<Topic[]> {
+    const topicMap = new Map<number, Topic>();
+    const childMap = new Map<number, number[]>();
+  
+    for (const topic of this.topics) {
+      topicMap.set(topic.id, topic);
+      const parentId = topic.parentTopicId;
+      if (parentId !== null) {
+        if (!childMap.has(parentId)) childMap.set(parentId, []);
+        childMap.get(parentId).push(topic.id);
+      }
+    }
+
+    const neighbors = new Map<number, number[]>();
+    for (const topic of this.topics) {
+      neighbors.set(topic.id, []);
+      const parentId = topic.parentTopicId;
+      if (parentId !== null) {
+        neighbors.get(topic.id).push(parentId);
+        neighbors.get(parentId).push(topic.id);
+      }
+    }
+  
+    const queue: [number, number[]][] = [[startId, [startId]]];
+    const visited = new Set<number>();
+  
+    while (queue.length > 0) {
+      const [currentId, path] = queue.pop();
+      if (currentId === endId) {
+        return path.map(id => topicMap.get(id));
+      }
+  
+      visited.add(currentId);
+      for (const neighbor of neighbors.get(currentId) || []) {
+        if (!visited.has(neighbor)) {
+          queue.push([neighbor, [...path, neighbor]]);
+        }
+      }
+    }
+  
+    return [];
+  }
+  
+
   private generateNextId(): number {
     const ids = this.topics.map((t) => t.id);
     return ids.length ? Math.max(...ids) + 1 : 1;

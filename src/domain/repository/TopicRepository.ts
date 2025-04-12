@@ -10,4 +10,8 @@ export default interface TopicRepository {
   create(topicDto: Topic): Promise<Topic>;
   update(topicId: number, topicDto: Topic): Promise<Topic>;
   remove(topicId: number): Promise<Topic[]>;
+  findShortestPath(
+    sourceTopicId: number,
+    targetTopicId: number
+  ): Promise<any>;
 }
