@@ -31,7 +31,7 @@ export default class TopicService {
       return { statusCode: 404, message: "No path found." };
     }
 
-    return shortestPath.map(item => `TOPIC ${item.id}: ${item.name}`).join(" -> ");
+    return shortestPath.map(item => `TopicID ${item.id}: ${item.name}`).join(" -> ");
   }
 
   async create(body: any) {

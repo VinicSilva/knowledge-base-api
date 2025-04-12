@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  knowledge-base-api:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "6000:6000"
+    container_name: knowledge-base-api
+    volumes:
+      - .:/app
+      - /app/node_modules
