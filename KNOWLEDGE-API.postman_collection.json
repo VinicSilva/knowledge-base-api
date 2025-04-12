@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "197b48eb-3244-4854-a531-b5bfbc8e0f76",
+		"name": "KNOWLEDGE-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "446245"
+	},
+	"item": [
+		{
+			"name": "GET TOPICS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/topics",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE TOPIC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"JavaScript\",\n    \"content\": \"XPTO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6000/topics",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TOPIC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"JS 2.0\",\n    \"content\": \"XPTO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6000/topics/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE TOPIC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/topics/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND TOPIC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/topics/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND SHORTEST PATH BETWEEN TOPICS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/topics/shortest-path/1/2",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"topics",
+						"shortest-path",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RESOURCES",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/resources",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE TOPIC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"http://newresource.com\",\n    \"description\": \"XPTO\",\n    \"topicId\": 1,\n    \"type\": \"pdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6000/resources",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE RESOURCE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"http://newresource.com\",\n    \"description\": \"XPTO UPDATED\",\n    \"topicId\": 1,\n    \"type\": \"pdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6000/resources/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"resources",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE RESOURCE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:6000/resources/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"resources",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
